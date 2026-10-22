@@ -1,0 +1,11 @@
+{
+  "name": "StockFlow | Vyrex Software",
+  "short_name": "StockFlow",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F6FB",
+  "theme_color": "#0F1729",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

@@ -1,0 +1,9 @@
+StockFlow landing-page integration
+
+- The public landing/login page is now public/index.html and is served at '/'.
+- The existing inventory dashboard has been preserved as public/dashboard.html.
+- Added authenticated /dashboard and /dashboard.html routes; unauthenticated requests redirect to /auth.html.
+- Login and registration on the landing page and auth page now redirect to /dashboard.
+- The existing warehouse hero image remains at public/stockflow-hero.jpg.
+- This package has passed Node syntax checks for server.js, smtp.js, and inline JavaScript in index.html, auth.html, and dashboard.html.
+- Browser end-to-end tests and live Render deployment have not been performed.

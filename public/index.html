@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>StockFlow – Sign in</title>
+<style>
+:root{--navy:#061a31;--navy2:#092744;--blue:#0878f9;--green:#00c878;--muted:#7185a3;--line:#d5e0ee;--red:#b91c1c}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#102747}body{min-height:100vh;background:#f6f9fc}
+.page{min-height:100vh;display:grid;grid-template-columns:minmax(0,2fr) minmax(390px,1fr);grid-template-rows:auto 1fr}
+.topbar{grid-column:1/-1;height:72px;background:#061a31;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 3.2%;border-bottom:1px solid rgba(255,255,255,.08)}
+.brand-top{display:flex;align-items:center;gap:13px;font-weight:750;font-size:26px;letter-spacing:-.7px}.mark{font-size:35px;line-height:1;font-weight:900;color:var(--green);letter-spacing:-5px;margin-right:5px}.divider{height:28px;width:1px;background:#526276;margin:0 5px}.product-name{font-size:23px;font-weight:750}.product-name span,.green{color:var(--green)}.tagline{font-size:14px;color:#e4edf8}
+.hero{position:relative;min-height:calc(100vh - 72px);color:white;overflow:hidden;background:#071a30 url('/stockflow-hero.jpg') center/cover no-repeat;display:flex;flex-direction:column;justify-content:space-between}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,15,30,.88) 0%,rgba(2,15,30,.65) 43%,rgba(2,15,30,.12) 100%)}.hero-content{position:relative;z-index:1;padding:7vh 5.2% 30px;max-width:820px}.hero h2{font-size:clamp(38px,4.1vw,64px);line-height:1.03;letter-spacing:-2px;margin:0 0 20px;font-weight:800}.hero h2 span{color:var(--green)}.hero-copy{font-size:clamp(17px,1.5vw,22px);line-height:1.5;margin:0 0 28px;max-width:560px;color:#edf4ff}.features{display:flex;flex-wrap:wrap;gap:0;margin-top:28px}.feature{display:flex;align-items:center;gap:10px;padding:0 17px;border-right:1px solid rgba(0,200,120,.35);font-size:14px;line-height:1.35}.feature:first-child{padding-left:0}.feature:last-child{border:0}.feature-icon{font-size:25px;color:var(--green)}.hero-footer{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:rgba(3,20,39,.88);padding:22px 5.2%;border-top:1px solid rgba(255,255,255,.08)}.foot-item{display:flex;gap:10px;align-items:center;color:#f2f7ff;font-size:13px}.foot-item b{color:var(--green);font-size:22px;font-weight:700}
+.auth-side{min-height:calc(100vh - 72px);background:linear-gradient(145deg,#fff,#f4f8fc);display:flex;align-items:center;justify-content:center;padding:36px clamp(24px,3vw,48px);border-left:1px solid #dce6f2}.card{width:100%;max-width:440px}.brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px}.brand-mark{font-size:56px;line-height:1;color:var(--green);font-weight:900;letter-spacing:-8px;margin-right:6px}.brand-word{font-size:42px;font-weight:800;letter-spacing:-1.5px;color:#0b2039}.card h1{text-align:center;font-size:32px;letter-spacing:-1px;margin:6px 0 32px;color:#0b2039}.card h1 span{color:var(--green)!important}.welcome{font-size:27px;font-weight:750;letter-spacing:-.7px;margin:0 0 7px}.sub{color:var(--muted);margin:0 0 25px;line-height:1.45;font-size:15px}.tabs{display:flex;gap:5px;padding:4px;background:#edf3f9;border-radius:12px;margin-bottom:22px}.tabs button{flex:1;border:0;background:transparent;border-radius:9px;padding:11px 7px;color:#60728b;font-weight:650;cursor:pointer;font-size:13px}.tabs button.on{background:white;color:#092744;box-shadow:0 1px 5px #0c274714}.hidden{display:none!important}form label{display:block;font-size:13px;font-weight:650;color:#314865;margin:15px 0 7px}input{width:100%;height:49px;border:1px solid #ccdaea;border-radius:10px;padding:0 14px;background:#fbfdff;color:#102747;font:inherit;outline:none}input:focus{border-color:var(--green);box-shadow:0 0 0 3px #00c87820}input::placeholder{color:#91a2ba}.primary{width:100%;min-height:51px;border:0;border-radius:10px;margin-top:22px;background:linear-gradient(100deg,#00a95f,#00b970);color:white;font-size:15px;font-weight:750;cursor:pointer;box-shadow:0 5px 12px #00a95f22}.primary:disabled{opacity:.65;cursor:wait}.hint{font-size:12px;color:var(--muted);margin-top:7px}.msg{font-size:13px;margin-top:14px;line-height:1.45}.msg.err{color:var(--red)}.msg.ok{color:#047857}.card-foot{text-align:center;color:#7c8da5;font-size:12px;margin-top:25px;line-height:1.5}.signup-note{text-align:center;color:#7c8da5;font-size:12px;line-height:1.5;margin-top:22px}
+@media(max-width:900px){.page{grid-template-columns:minmax(0,1fr) minmax(340px,.85fr)}.hero h2{font-size:42px}.feature{padding:0 9px;font-size:12px}.hero-footer{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.page{display:flex;flex-direction:column}.topbar{height:62px;padding:0 18px}.brand-top{font-size:20px}.mark{font-size:29px}.product-name{font-size:18px}.tagline{display:none}.hero{min-height:390px;order:0}.hero-content{padding:35px 24px 20px}.hero h2{font-size:40px}.hero-copy{font-size:16px;margin-bottom:15px}.features{margin-top:15px;gap:10px}.feature{border:0;padding:0;font-size:12px}.feature-icon{font-size:21px}.hero-footer{display:none}.auth-side{order:1;min-height:auto;padding:34px 22px 42px;border-left:0}.brand-mark{font-size:45px}.brand-word{font-size:34px}.card h1{font-size:27px;margin-bottom:22px}.welcome{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <div class="brand-top"><span class="mark" aria-hidden="true">V</span><span>vyrex</span><span class="divider"></span><span class="product-name">Stock<span>Flow</span></span></div>
+    <div class="tagline">Smarter Stock. Better Decisions.</div>
+  </header>
+  <section class="hero" aria-label="StockFlow product overview">
+    <div class="hero-content">
+      <h2>Your Store.<br>On <span>1 Platform.</span></h2>
+      <p class="hero-copy">Track stock. Manage sales. Calculate profit.<br>All in one place.</p>
+      <div class="features">
+        <div class="feature"><span class="feature-icon">◇</span><span>Stock<br>Tracking</span></div>
+        <div class="feature"><span class="feature-icon">▥</span><span>Multi-Platform<br>Management</span></div>
+        <div class="feature"><span class="feature-icon">ϟ</span><span>Live Profit<br>Calculator</span></div>
+        <div class="feature"><span class="feature-icon">◎</span><span>Organise<br>Your Workflow</span></div>
+      </div>
+    </div>
+    <div class="hero-footer">
+      <div class="foot-item"><b>↗</b><span>Grow your business</span></div>
+      <div class="foot-item"><b>◇</b><span>Keep stock organised</span></div>
+      <div class="foot-item"><b>ϟ</b><span>Understand product costs</span></div>
+      <div class="foot-item"><b>▣</b><span>Built for resellers</span></div>
+    </div>
+  </section>
+  <main class="auth-side">
+    <div class="card">
+      <div class="brand" aria-label="VYREX"><span class="brand-mark" aria-hidden="true">V</span><span class="brand-word">vyrex</span></div>
+      <h1>Stock<span>Flow</span></h1>
+      <p class="welcome" id="welcome">Welcome back</p>
+      <p class="sub" id="sub">Log in to your account to continue.</p>
+      <div class="tabs" id="tabs">
+        <button type="button" data-tab="login" class="on">Log in</button>
+        <button type="button" data-tab="register">Create account</button>
+        <button type="button" data-tab="forgot">Forgot password?</button>
+      </div>
+      <form id="f-login" novalidate>
+        <label for="l-email">Email address</label><input id="l-email" type="email" autocomplete="email" placeholder="Enter your email address" required>
+        <label for="l-pass">Password</label><input id="l-pass" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+        <button class="primary" type="submit">Log in <span aria-hidden="true">→</span></button>
+      </form>
+      <form id="f-register" class="hidden" novalidate>
+        <label for="r-name">Full name</label><input id="r-name" type="text" autocomplete="name" placeholder="Enter your full name" required>
+        <label for="r-email">Email address</label><input id="r-email" type="email" autocomplete="email" placeholder="Enter your email address" required>
+        <label for="r-pass">Create password</label><input id="r-pass" type="password" autocomplete="new-password" placeholder="At least 8 characters" required>
+        <div class="hint">At least 8 characters.</div>
+        <label for="r-pass2">Confirm password</label><input id="r-pass2" type="password" autocomplete="new-password" placeholder="Enter your password again" required>
+        <button class="primary" type="submit">Create account →</button>
+      </form>
+      <form id="f-forgot" class="hidden" novalidate>
+        <label for="g-email">Email address</label><input id="g-email" type="email" autocomplete="email" placeholder="Enter your email address" required>
+        <div class="hint">We will email you a link to choose a new password.</div>
+        <button class="primary" type="submit">Send reset link →</button>
+      </form>
+      <form id="f-reset" class="hidden" novalidate>
+        <label for="p-pass">New password</label><input id="p-pass" type="password" autocomplete="new-password" placeholder="At least 8 characters" required>
+        <div class="hint">At least 8 characters.</div>
+        <label for="p-pass2">Confirm new password</label><input id="p-pass2" type="password" autocomplete="new-password" placeholder="Enter your new password again" required>
+        <button class="primary" type="submit">Set new password →</button>
+      </form>
+      <div id="msg" class="msg" role="status" aria-live="polite"></div>
+      <div class="signup-note">New to StockFlow? Create your free account and start managing your stock in one place.</div>
+    </div>
+  </main>
+</div>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const token = new URLSearchParams(location.search).get('token');
+  function show(msg, kind){ const m=$('msg'); m.textContent=msg||''; m.className='msg'+(msg?' '+kind:''); }
+  function setBusy(form, busy){ const b=form.querySelector('button.primary'); b.disabled=busy; }
+  function showPanel(name){
+    ['login','register','forgot','reset'].forEach(n=>$('f-'+n).classList.toggle('hidden', n!==name));
+    document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on', b.dataset.tab===name));
+    $('tabs').classList.toggle('hidden', name==='reset');
+    $('sub').textContent = {login:'Log in to your account to continue.',register:'Create your account to get started.',forgot:'Enter your email to reset your password.',reset:'Choose a new password.'}[name];
+    $('welcome').textContent = {login:'Welcome back',register:'Create your account',forgot:'Reset your password',reset:'Choose a new password'}[name];
+    show('', '');
+  }
+  async function post(path, body){
+    const r = await fetch(path,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    let j={}; try{ j=await r.json(); }catch(_){}
+    if(!r.ok) throw new Error(j.error || ('Request failed ('+r.status+')'));
+    return j;
+  }
+  document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',()=>showPanel(b.dataset.tab)));
+
+  $('f-login').addEventListener('submit', async e=>{
+    e.preventDefault(); show('', ''); setBusy($('f-login'), true);
+    try{ await post('/api/login',{email:$('l-email').value.trim(), password:$('l-pass').value}); location.replace('/dashboard'); }
+    catch(err){ show(err.message,'err'); setBusy($('f-login'), false); }
+  });
+  $('f-register').addEventListener('submit', async e=>{
+    e.preventDefault(); show('', '');
+    const name=$('r-name').value.trim(), email=$('r-email').value.trim(), pw=$('r-pass').value, pw2=$('r-pass2').value;
+    if(name.length<2){ show('Enter your name (at least 2 characters).','err'); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ show('Enter a valid email address.','err'); return; }
+    if(pw.length<8){ show('Password must be at least 8 characters.','err'); return; }
+    if(pw!==pw2){ show('The two passwords do not match.','err'); return; }
+    setBusy($('f-register'), true);
+    try{ await post('/api/register',{name,email,password:pw}); location.replace('/dashboard'); }
+    catch(err){ show(err.message,'err'); setBusy($('f-register'), false); }
+  });
+  $('f-forgot').addEventListener('submit', async e=>{
+    e.preventDefault(); show('', ''); setBusy($('f-forgot'), true);
+    try{ const j=await post('/api/forgot',{email:$('g-email').value.trim()}); show(j.message,'ok'); }
+    catch(err){ show(err.message,'err'); }
+    setBusy($('f-forgot'), false);
+  });
+  $('f-reset').addEventListener('submit', async e=>{
+    e.preventDefault(); show('', '');
+    const pw=$('p-pass').value, pw2=$('p-pass2').value;
+    if(pw.length<8){ show('Password must be at least 8 characters.','err'); return; }
+    if(pw!==pw2){ show('The two passwords do not match.','err'); return; }
+    setBusy($('f-reset'), true);
+    try{ const j=await post('/api/reset',{token,password:pw}); show(j.message,'ok'); history.replaceState(null,'','/auth.html'); setTimeout(()=>{ showPanel('login'); show(j.message,'ok'); }, 0); }
+    catch(err){ show(err.message,'err'); }
+    setBusy($('f-reset'), false);
+  });
+
+  // Already signed in? Go straight to the app.
+  fetch('/api/me',{credentials:'same-origin'}).then(r=>{ if(r.ok && !token) location.replace('/dashboard'); }).catch(()=>{});
+  showPanel(token ? 'reset' : 'login');
+})();
+</script>
+</body>
+</html>
